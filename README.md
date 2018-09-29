@@ -29,3 +29,19 @@ Angular "AsyncPipe" subscribes to Observable and returns the emitted data.
     The Consumer that subscribes to the Observable keeps receiving values until the Observable is completed or the consumer unsubscribes from the observable.
 
     Let's start by defining an observable that provides a stream of updates
+
+
+#Using the map() Operator
+    The map() operator is similar to the Array.map() method. It lets you map observable responses to other values. For example:
+
+        import { Observable} from 'rxjs';
+        import { map } from 'rxjs/operators';
+
+        getItems(): Observable<Array<any>> {
+
+        return this.aService.getItems()
+            .pipe(map(response => response.data));
+        } 
+        The getItems() method returns an Observable. We're using the map() operator to return the data property of the response object. The operator enables us to map the response of the Observable stream to the data value.
+
+        We import the pipeable operator map() from the rxjs/operators package and we use the pipe() method (which takes a variable number of pipeable operators) to wrap to wrap the operator.

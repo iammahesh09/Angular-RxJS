@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 import { TODOS } from '../models/todos.module';
 
 
@@ -12,7 +13,7 @@ export class RxjsService {
   constructor(private _http: HttpClient) { }
 
   getTodos(): Observable<TODOS[]> {
-    return this._http.get<TODOS[]>(`${this.todosUrl}/todos`)
+    return this._http.get<TODOS[]>(`${this.todosUrl}/todos`);
   }
 
 }
